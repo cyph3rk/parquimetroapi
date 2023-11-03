@@ -12,4 +12,13 @@ CREATE TABLE IF NOT EXISTS public.ticket
     PRIMARY KEY (id)
 );
 
+CREATE TABLE IF NOT EXISTS public.valores
+(
+    id serial NOT NULL,
+    veiculo text NOT NULL,
+    valor numeric(10, 2) NOT NULL,
+    fracao numeric(10, 2) NOT NULL,
+    PRIMARY KEY (id)
+);
+
 END;

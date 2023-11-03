@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @Entity
-@Table(name = "ticket")
-public class Ticket {
+@Table(name = "valores")
+public class Valores {
 
     @JsonProperty
     @Id
@@ -21,25 +21,20 @@ public class Ticket {
     private Long id;
 
     @JsonProperty
-    private String codigotag;
-
-    @JsonProperty
-    private LocalDateTime entrada;
-
-    @JsonProperty
-    private LocalDateTime saida;
+    private String veiculo;
 
     @JsonProperty
     private BigDecimal valor;
 
-    public Ticket(String codigotag, LocalDateTime entrada, LocalDateTime saida, BigDecimal valor) {
-        this.codigotag = codigotag;
-        this.entrada = entrada;
-        this.saida = saida;
+    @JsonProperty
+    private BigDecimal fracao;
+
+    public Valores(String veiculo, BigDecimal valor, BigDecimal fracao) {
+        this.veiculo = veiculo;
         this.valor = valor;
+        this.fracao = fracao;
     }
 
-    public Ticket() {
-
+    public Valores() {
     }
 }

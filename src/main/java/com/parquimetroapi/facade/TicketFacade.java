@@ -126,9 +126,6 @@ public class TicketFacade {
 
         List<Ticket> ticketList = ticketRepositorio.findByCodigotag(codigotag);
 
-//        return ticketList.stream()
-//                .map(this::saida_liberada).collect(Collectors.toList());
-
         Ticket ticket = ticketList.stream().findFirst().orElse(null);
         if (ticket == null) {
             return "{\"Erro\": \"Tag NÃO cadastrada erro:1231.\"}";
