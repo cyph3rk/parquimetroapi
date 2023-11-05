@@ -24,6 +24,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Controller de tipos de veiculos valores a ser cobrado pela vaga e valores a ser cobrado pela fração de tempo decorrido
+ *
+ * @author Diego Vargas
+ */
 @RestController
 @RequestMapping("/valores")
 public class ValoresController {
@@ -47,6 +52,13 @@ public class ValoresController {
                 ConstraintViolation::getPropertyPath, ConstraintViolation::getMessage));
     }
 
+    /**
+     * Função que cadastra um novo tipo de veículo, valor e fração
+     * @param valoresForm json com os dados de tipo de veiculo, valor e valor da fração
+     * @return mensagem com sucesso ou não do cadastro
+     *
+     * @author Diego Vargas
+     */
     @PostMapping("/salvar")
     public ResponseEntity<Object> ticketEntrada(@RequestBody ValoresForm valoresForm) {
         logger.info("POST - Registra veiculo e valor");
@@ -66,6 +78,12 @@ public class ValoresController {
         return ResponseEntity.status(HttpStatus.CREATED).body(valoresDto);
     }
 
+    /**
+     * Função que lista todos os tipos de veiculos cadastrados
+     * @return json listando todos os tipode de veiculos cadastrados
+     *
+     * @author Diego Vargas
+     */
     @GetMapping("/lista")
     public ResponseEntity<Object> getTodosValores() {
         logger.info("GET - Lista todos os valores");

@@ -21,6 +21,13 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Controller Ticket de interações as funcionalidades relacionada a manutenção de ticket e tags
+ *
+ *
+ * @author Diego Vargas
+ */
+
 @RestController
 @RequestMapping("/ticket")
 public class TicketController {
@@ -44,6 +51,13 @@ public class TicketController {
                 ConstraintViolation::getPropertyPath, ConstraintViolation::getMessage));
     }
 
+    /**
+     * Função para registro de entrada de uma tag
+     * @param ticketForm json com os parametros de entrada da Tag
+     * @return Mensagem conformando sucesso ou não no cadastro da Tag
+     *
+     * @author Diego Vargas
+     */
     @PostMapping("/entrada")
     public ResponseEntity<Object> ticketEntrada(@RequestBody TicketForm ticketForm) {
         logger.info("POST - Registra Ticket Entrada");
@@ -70,6 +84,13 @@ public class TicketController {
         return ResponseEntity.status(HttpStatus.CREATED).body("{\"Messagem\": \"Entrada registrada com sucesso.\"}");
     }
 
+    /**
+     * Função para registra a saida de uma tag
+     * @param ticketForm json com o número da Tag
+     * @return Mensagem com valor a ser cobrado.
+     *
+     * @author Diego Vargas
+     */
     @PostMapping("/saida")
     public ResponseEntity<Object> ticketSaida(@RequestBody TicketForm ticketForm) {
         logger.info("POST - Registra Ticket Saida");
@@ -89,6 +110,13 @@ public class TicketController {
         return ResponseEntity.status(HttpStatus.CREATED).body("{\"Messagem\": \"saida registrada com sucesso.\"}");
     }
 
+    /**
+     * Função para consultar os dados registrados de uma tag pelo seu número
+     * @param codigotag código a tag a ser consultada
+     * @return retorna json com os dados regitrados tag informada.
+     *
+     * @author Diego Vargas
+     */
     @GetMapping("/{codigotag}")
     public ResponseEntity<Object> getTicketPorTag(@PathVariable String codigotag) {
         logger.info("GET - Pega ticket por tag: " + codigotag);
@@ -102,6 +130,14 @@ public class TicketController {
         return ResponseEntity.status(HttpStatus.OK).body(ticketDto);
     }
 
+
+    /**
+     * Funçaõ que retorna se uma tag está liberada para sair.
+     * @param codigotag código a tag a ser consultada
+     * @return mensagem informando se a Tag pode ou não sair
+     *
+     * @author Diego Vargas
+     */
     @GetMapping("/saidaliberada/{codigotag}")
     public ResponseEntity<Object> getSaidaLiberada(@PathVariable String codigotag) {
         logger.info("GET - Saida Liberada - por tag: " + codigotag);
@@ -111,6 +147,12 @@ public class TicketController {
         return ResponseEntity.status(HttpStatus.OK).body(saida);
     }
 
+    /**
+     * Lista dodas as tag com valor em aberto.
+     * @return json com os dados de todas as tags em aberto
+     *
+     * @author Diego Vargas
+     */
     @GetMapping("/listaemaberto")
     public ResponseEntity<Object> getListaEmAberto() {
         logger.info("GET - Retorna lista de tags em aberto");

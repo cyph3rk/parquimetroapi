@@ -8,6 +8,13 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * Classe de negocio com tipo de veículo, valor da vaga e valor a ser cobrado por fração do tempo de uso.
+ *
+ *
+ * @author Diego Vargas
+ */
+
 @Setter
 @Getter
 @Entity

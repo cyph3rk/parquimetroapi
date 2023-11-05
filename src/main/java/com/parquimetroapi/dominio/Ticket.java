@@ -8,6 +8,13 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * Classe de negocio ticket com os dados relevantes ao ticket.
+ *
+ *
+ * @author Diego Vargas
+ */
+
 @Setter
 @Getter
 @Entity
